@@ -1,0 +1,35 @@
+<h2>Catálogo de Produtos</h2>
+
+<button (click)="aumentarPrecos()">Aumentar preços em 10%</button>
+<button (click)="diminuirPrecos()">Diminuir preços em 10%</button>
+
+<!-- Tabela -->
+<table border="1" cellpadding="8" style="margin-top: 10px; border-collapse: collapse; width: 100%;">
+  <tr>
+    <th>Produto</th>
+    <th>Preço</th>
+    <th>Estoque</th>
+    <th>Status</th>
+  </tr>
+
+  <tr *ngFor="let produto of produtos">
+    <td>{{ produto.nome }}</td>
+
+    <td [ngStyle]="{ color: produto.preco > 2000 ? 'blue' : 'black' }">
+      R$ {{ produto.preco }}
+    </td>
+
+    <td>{{ produto.estoque }}</td>
+
+    <td *ngIf="produto.estoque > 0; else semEstoque"
+        [ngClass]="'disponivel'">
+      Disponível
+    </td>
+
+    <ng-template #semEstoque>
+      <td [ngClass]="'indisponivel'">
+        Indisponível
+      </td>
+    </ng-template>
+  </tr>
+</table>

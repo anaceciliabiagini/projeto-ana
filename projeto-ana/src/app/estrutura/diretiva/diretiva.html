@@ -1,0 +1,19 @@
+<h2>Lista de Alunos</h2>
+
+<button (click)="alternarExibicao()">
+    {{ exibirLista ? 'Esconder Lista' : 'Mostrar Lista' }}
+</button>
+
+@if (exibirLista) {
+<ul [ngStyle]="{'font-size.px': tamanhoFonte}">
+    @for (aluno of alunos; track aluno.id) {
+        <li [ngClass]="{'aluno-ativo': aluno.status, 'aluno-inativo': !aluno.status}">
+            {{ aluno.nome }} - Status: {{ aluno.status ? 'Ativo' : 'Inativo' }}
+        </li>
+    }
+</ul>
+}
+<div>
+    <button (click)="aumentarFonte()">+</button>
+    <button (click)="diminuirFonte()">-</button>
+</div>
