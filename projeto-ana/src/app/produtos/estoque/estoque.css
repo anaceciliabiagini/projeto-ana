@@ -1,9 +1,8 @@
 .disponivel {
-  color: green;
-  font-weight: bold;
+    color: green;
 }
 
 .indisponivel {
-  color: red;
-  font-style: italic;
+    color: red;
+    font-style: italic;
 }
